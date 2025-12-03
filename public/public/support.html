@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поддержка — VORTEX-SHOP</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-headset"></i>
+                <h1>Поддержка VORTEX-SHOP</h1>
+            </div>
+            <nav class="nav">
+                <a href="/"><i class="fas fa-home"></i> Вернуться в магазин</a>
+                <a href="/support.html" class="active"><i class="fas fa-question-circle"></i> Поддержка</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container main-content">
+        <div class="support-page">
+            <h1><i class="fas fa-life-ring"></i> Центр поддержки</h1>
+            
+            <div class="support-categories">
+                <div class="category">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h3>Доставка UC</h3>
+                    <p>Время доставки, проблемы с получением</p>
+                </div>
+                <div class="category">
+                    <i class="fas fa-credit-card"></i>
+                    <h3>Оплата</h3>
+                    <p>Проблемы с оплатой, возвраты</p>
+                </div>
+                <div class="category">
+                    <i class="fas fa-gamepad"></i>
+                    <h3>Игровые вопросы</h3>
+                    <p>Player ID, аккаунты PUBG</p>
+                </div>
+                <div class="category">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Безопасность</h3>
+                    <p>Гарантии, защита данных</p>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h2><i class="fas fa-comments"></i> Частые вопросы</h2>
+                <div class="faq-list" id="faq-list">
+                    <!-- FAQ загружается через JS -->
+                </div>
+            </div>
+
+            <div class="contact-section">
+                <h2><i class="fas fa-envelope"></i> Свяжитесь с нами</h2>
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <i class="fab fa-telegram"></i>
+                        <h3>Telegram</h3>
+                        <p>@vortex_shop_support</p>
+                        <p>Живой оператор, ответ в течение 5 минут</p>
+                        <a href="https://t.me/vortex_shop_support" target="_blank" class="btn-contact">Написать</a>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p>support@vortex-shop.com</p>
+                        <p>Ответ в течение 24 часов</p>
+                        <a href="mailto:support@vortex-shop.com" class="btn-contact">Написать</a>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-comment-dots"></i>
+                        <h3>Чат на сайте</h3>
+                        <p>Бот поддержки онлайн 24/7</p>
+                        <button id="open-chat" class="btn-contact">Открыть чат</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="emergency-section">
+                <h2><i class="fas fa-exclamation-triangle"></i> Срочные проблемы</h2>
+                <div class="emergency-cards">
+                    <div class="emergency-card">
+                        <h4><i class="fas fa-clock"></i> UC не пришли через 30 минут</h4>
+                        <ol>
+                            <li>Проверьте правильность Player ID</li>
+                            <li>Проверьте статус оплаты</li>
+                            <li>Обратитесь в поддержку с номером заказа</li>
+                        </ol>
+                    </div>
+                    <div class="emergency-card">
+                        <h4><i class="fas fa-exclamation-circle"></i> Проблемы с оплатой</h4>
+                        <ol>
+                            <li>Убедитесь, что сумма платежа точная</li>
+                            <li>Для крипто: проверьте сеть ERC20</li>
+                            <li>Для карт: проверьте данные карты</li>
+                            <li>Подождите 5-10 минут и проверьте статус</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-section">
+                <h4><i class="fas fa-shield-alt"></i> Гарантии</h4>
+                <p>Мгновенная доставка • Безопасные платежи • Поддержка 24/7</p>
+            </div>
+            <div class="footer-section">
+                <h4><i class="fas fa-question-circle"></i> Помощь</h4>
+                <p>Как найти Player ID • Как оплатить USDT • Частые вопросы</p>
+            </div>
+            <div class="footer-section">
+                <h4><i class="fas fa-envelope"></i> Контакты</h4>
+                <p>Telegram: @vortex_shop_support</p>
+                <p>Email: support@vortex-shop.com</p>
+                <p>Ответ в течение 5 минут</p>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>© 2023 VORTEX-SHOP. Мы не связаны с PUBG Corporation.</p>
+            <p>UC продаётся по цене, установленной издателем игры.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Загрузка FAQ
+        async function loadFAQ() {
+            try {
+                const response = await fetch('/api/faq');
+                const faq = await response.json();
+                const faqList = document.getElementById('faq-list');
+                
+                faq.forEach(item => {
+                    const faqItem = document.createElement('div');
+                    faqItem.className = 'faq-item';
+                    faqItem.innerHTML = `
+                        <div class="faq-question">
+                            <h4>${item.q}</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>${item.a}</p>
+                        </div>
+                    `;
+                    faqList.appendChild(faqItem);
+                    
+                    // Раскрытие ответа
+                    faqItem.querySelector('.faq-question').addEventListener('click', function() {
+                        const answer = this.nextElementSibling;
+                        const icon = this.querySelector('i');
+                        
+                        if (answer.style.display === 'block') {
+                            answer.style.display = 'none';
+                            icon.style.transform = 'rotate(0deg)';
+                        } else {
+                            answer.style.display = 'block';
+                            icon.style.transform = 'rotate(180deg)';
+                        }
+                    });
+                });
+            } catch (error) {
+                console.error('Ошибка загрузки FAQ:', error);
+            }
+        }
+        
+        // Открытие чата
+        document.getElementById('open-chat').addEventListener('click', function() {
+            // Открывает основное окно чата
+            if (window.opener) {
+                window.opener.showSupportWidget();
+            } else {
+                alert('Вернитесь на главную страницу для открытия чата');
+            }
+        });
+        
+        // Инициализация
+        loadFAQ();
+    </script>
+</body>
+</html>
