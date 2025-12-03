@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VORTEX-SHOP — Купить UC для PUBG Mobile</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Верхняя панель -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-gamepad"></i>
+                <h1>VORTEX-SHOP</h1>
+            </div>
+            <nav class="nav">
+                <a href="/" class="active"><i class="fas fa-home"></i> Магазин</a>
+                <a href="/support.html"><i class="fas fa-headset"></i> Поддержка</a>
+                <a href="#" id="my-orders"><i class="fas fa-history"></i> Мои заказы</a>
+                <div class="user-section">
+                    <div id="user-info" class="hidden">
+                        <img id="user-avatar" src="" alt="Avatar">
+                        <span id="user-name"></span>
+                        <button id="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
+                    </div>
+                    <button id="login-btn" class="btn-login">
+                        <i class="fab fa-google"></i> Войти через Google
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главный контент -->
+    <main class="container main-content">
+        <!-- Блок "Как купить UC" -->
+        <section class="how-to">
+            <h2><i class="fas fa-shopping-cart"></i> Как купить UC за 3 шага:</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Выбери UC</h3>
+                    <p>Накопай на нужный пакет</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Введи Player ID</h3>
+                    <p>Только цифры из PUBG</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Оплати</h3>
+                    <p>Выбери способ оплаты</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Выбор UC -->
+        <section class="products-section">
+            <h2><i class="fas fa-coins"></i> Выбери количество UC</h2>
+            <div class="products-grid" id="products-container">
+                <!-- Товары загружаются через JS -->
+            </div>
+            <div class="selected-product">
+                <h3>Вы выбрали: <span id="selected-uc">0 UC</span></h3>
+                <p class="price" id="selected-price">$0.00</p>
+            </div>
+        </section>
+
+        <!-- Форма заказа -->
+        <section class="order-form">
+            <h2><i class="fas fa-keyboard"></i> Вводи данные PUBG</h2>
+            <div class="form-group">
+                <label for="player-id"><i class="fas fa-user-secret"></i> Player ID (только цифры):</label>
+                <input type="text" id="player-id" placeholder="Например: 5123456789" maxlength="15">
+                <p class="help">Player ID можно найти в игре PUBG (только цифры, максимум 15)</p>
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fas fa-wallet"></i> Выбери способ оплаты:</label>
+                <div class="payment-methods">
+                    <div class="payment-method active" data-method="binance">
+                        <i class="fab fa-google-pay"></i>
+                        <span>Binance Pay (USDT)</span>
+                    </div>
+                    <div class="payment-method" data-method="google">
+                        <i class="fab fa-google"></i>
+                        <span>Google Pay</span>
+                    </div>
+                </div>
+            </div>
+
+            <button id="create-order-btn" class="btn-pay" disabled>
+                <i class="fas fa-lock"></i> Перейти к оплате
+            </button>
+        </section>
+
+        <!-- Окно поддержки (бот) -->
+        <div class="support-widget">
+            <div class="support-header">
+                <i class="fas fa-robot"></i>
+                <h3>Поддержка Vortex Bot</h3>
+                <button class="close-support"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="support-messages" id="support-messages">
+                <div class="message bot">
+                    <strong>Vortex Bot:</strong> Привет! Я помогу с покупкой UC. Выбери вопрос:
+                </div>
+            </div>
+            <div class="support-quick-questions">
+                <button class="quick-question" data-q="Как найти Player ID?">Как найти Player ID?</button>
+                <button class="quick-question" data-q="Сколько ждать доставку?">Сколько ждать доставку?</button>
+                <button class="quick-question" data-q="Как оплатить через Binance?">Как оплатить через Binance?</button>
+                <button class="quick-question" data-q="Возврат средств">Возврат средств</button>
+            </div>
+            <div class="support-input">
+                <input type="text" id="support-input" placeholder="Задайте свой вопрос...">
+                <button id="send-support-btn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-section">
+                <h4><i class="fas fa-shield-alt"></i> Гарантии</h4>
+                <p>Мгновенная доставка • Безопасные платежи • Поддержка 24/7</p>
+            </div>
+            <div class="footer-section">
+                <h4><i class="fas fa-question-circle"></i> Помощь</h4>
+                <p>Как найти Player ID • Как оплатить USDT • Частые вопросы</p>
+            </div>
+            <div class="footer-section">
+                <h4><i class="fas fa-envelope"></i> Контакты</h4>
+                <p>Telegram: @vortex_shop_support</p>
+                <p>Email: support@vortex-shop.com</p>
+                <p>Ответ в течение 5 минут</p>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>© 2023 VORTEX-SHOP. Мы не связаны с PUBG Corporation.</p>
+            <p>UC продаётся по цене, установленной издателем игры.</p>
+        </div>
+    </footer>
+
+    <!-- Модальное окно оплаты -->
+    <div class="modal" id="payment-modal">
+        <div class="modal-content">
+            <h2><i class="fas fa-credit-card"></i> Оплата заказа</h2>
+            <div id="payment-details">
+                <!-- Информация об оплате -->
+            </div>
+            <div class="modal-buttons">
+                <button id="confirm-payment" class="btn-confirm">Подтвердить оплату</button>
+                <button id="cancel-payment" class="btn-cancel">Отмена</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>
