@@ -1,9 +1,6 @@
 {
   "name": "vortex-shop",
-  "version": "2.0.0",
-  "engines": {
-    "node": "20.x"
-  },
+  "version": "1.0.0",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -11,9 +8,6 @@
   "dependencies": {
     "express": "^4.18.2",
     "pg": "^8.11.0",
-    "redis": "^4.6.0",
-    "dotenv": "^16.3.0",
-    "express-session": "^1.17.3",
-    "connect-redis": "^7.1.0"
+    "redis": "^4.6.0"
   }
 }
